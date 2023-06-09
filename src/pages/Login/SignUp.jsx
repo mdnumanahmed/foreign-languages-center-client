@@ -6,6 +6,7 @@ import { BiShow, BiHide } from 'react-icons/bi';
 import Swal from "sweetalert2";
 
 const SignUp = () => {
+    const [error, setError] = useState("");
     const [showPass, setShowPass] = useState(false)
   const [accept, setAccept] = useState(false);
   const navigate = useNavigate();
@@ -238,9 +239,9 @@ const SignUp = () => {
               </Link>
             </p>
           </div>
-          {/* {error && (
+          {error && (
             <p className="my-3 text-center text-red-600 font-bold">{error}</p>
-          )} */}
+          )}
           {/* <SocialLogin setError={setError} /> */}
         </div>
       </div>

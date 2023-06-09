@@ -1,12 +1,20 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+import useAuth from "../../../hooks/useAuth";
 
 const FlcNavbar = () => {
-  const user = false;
+  const {user, logOut} = useAuth()
+  const navigate = useNavigate();
 
-  const handleLogOut = () => {};
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => console.log(error.message));
+  };
 
   return (
     <div className="border bottom-2 shadow-md">
