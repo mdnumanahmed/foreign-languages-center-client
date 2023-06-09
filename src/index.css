@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+nav ul a{
+    @apply text-gray-900 hover:ring-4 hover:outline-none hover:ring-pink-300 dark:hover:ring-pink-800 font-medium rounded-lg text-base px-3 py-2.5 text-center
+}
+nav ul a.active{
+    @apply text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-base px-5 py-2.5 text-center 
+}
