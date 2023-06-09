@@ -1,48 +1,51 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { BiShow, BiHide } from 'react-icons/bi';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { BiShow, BiHide } from "react-icons/bi";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
 
-
 const Login = () => {
-    const [showPass, setShowPass] = useState(false)
-    const [error, setError] = useState("");
-    const { signIn } = useAuth();
-  
-    const {
-      register,
-      formState: { errors },
-      handleSubmit,
-    } = useForm();
-    const onSubmit = (data) => {
-      setError("");
-      console.log(data);
-      signIn(data.email, data.password)
-        .then((result) => {
-          const createdUser = result.user;
-          console.log(createdUser);
-          Swal.fire({
-            icon: "success",
-            title: "Welcome",
-            text: "User logged in successfully!",
-          });
-        //   navigate(from, { replace: true });
-        })
-        .catch((error) => {
-          setError(error.message);
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: error.message,
-          });
-        });
-    };
+  const [showPass, setShowPass] = useState(false);
+  const [error, setError] = useState("");
+  const { signIn } = useAuth();
 
-    return (
-        <div>
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const onSubmit = (data) => {
+    setError("");
+    console.log(data);
+    signIn(data.email, data.password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+        Swal.fire({
+          icon: "success",
+          title: "Welcome",
+          text: "User logged in successfully!",
+        });
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setError(error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+        });
+      });
+  };
+
+  return (
+    <div>
       <div className="w-[90%] lg:w-[50%] mx-auto p-20 my-5 bg-slate-100 rounded-lg shadow-xl">
         <div className="form-title text-center mb-5">
           <h2 className="text-3xl font-bold text-[#ff2556]">Please Login</h2>
@@ -76,7 +79,7 @@ const Login = () => {
 
               <div className="relative z-0 w-full mb-6 group">
                 <input
-                  type={showPass ? "text" : "password" }
+                  type={showPass ? "text" : "password"}
                   onClick={() => setShowPass(!showPass)}
                   id="password"
                   className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -97,7 +100,9 @@ const Login = () => {
                 >
                   Password
                 </label>
-                <span className="absolute right-1 top-4 pointer-events-none">{ showPass ? <BiHide /> : <BiShow />}</span>
+                <span className="absolute right-1 top-4 pointer-events-none">
+                  {showPass ? <BiHide /> : <BiShow />}
+                </span>
               </div>
 
               <div className="text-center">
@@ -124,7 +129,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Login;
