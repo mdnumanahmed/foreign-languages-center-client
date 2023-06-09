@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { BiShow, BiHide } from 'react-icons/bi';
+import Swal from "sweetalert2";
 
 const SignUp = () => {
     const [showPass, setShowPass] = useState(false)
   const [accept, setAccept] = useState(false);
-  const { createUser } = useAuth();
+  const navigate = useNavigate();
+  const { createUser, updateUserData } = useAuth();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
@@ -18,7 +21,32 @@ const SignUp = () => {
       const loggedUser = result.user;
       console.log(loggedUser);
 
-      
+      updateUserData(data.name, data.photoURL)
+        .then(() => {
+          const saveUserToDB = { name: data.name, email: data.email };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUserToDB),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "User created successfully.",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            });
+        })
+        .catch((error) => console.log(error));
     });
   };
 
