@@ -4,6 +4,7 @@ import { BiShow, BiHide } from 'react-icons/bi';
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import SocialLogin from "./SocialLogin";
 
 
 const Login = () => {
@@ -119,7 +120,7 @@ const Login = () => {
           {error && (
             <p className="my-3 text-center text-red-600 font-bold">{error}</p>
           )}
-          {/* <SocialLogin setError={setError} /> */}
+          <SocialLogin setError={setError} />
         </div>
       </div>
     </div>

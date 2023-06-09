@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { BiShow, BiHide } from 'react-icons/bi';
 import Swal from "sweetalert2";
+import SocialLogin from "./SocialLogin";
 
 const SignUp = () => {
     const [error, setError] = useState("");
@@ -242,7 +243,7 @@ const SignUp = () => {
           {error && (
             <p className="my-3 text-center text-red-600 font-bold">{error}</p>
           )}
-          {/* <SocialLogin setError={setError} /> */}
+          <SocialLogin setError={setError} />
         </div>
       </div>
     </div>
