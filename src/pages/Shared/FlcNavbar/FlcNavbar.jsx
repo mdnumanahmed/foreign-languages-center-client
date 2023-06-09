@@ -4,7 +4,7 @@ import logo from "../../../assets/logo.png";
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 
 const FlcNavbar = () => {
-  const user = true;
+  const user = false;
 
   const handleLogOut = () => {};
 
