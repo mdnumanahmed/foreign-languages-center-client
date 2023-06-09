@@ -1,17 +1,27 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { BiShow, BiHide } from 'react-icons/bi';
 
 const SignUp = () => {
-    const [accept, setAccept] = useState(false);
+    const [showPass, setShowPass] = useState(false)
+  const [accept, setAccept] = useState(false);
+  const { createUser } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+
+      
+    });
   };
+
   return (
     <div>
       <div className="w-[90%] lg:w-[50%] mx-auto p-20 my-5 bg-slate-100 rounded-lg shadow-xl">
@@ -69,7 +79,8 @@ const SignUp = () => {
 
               <div className="relative z-0 w-full mb-6 group">
                 <input
-                  type="password"
+                  type={showPass ? "text" : "password" }
+                  onClick={() => setShowPass(!showPass)}
                   id="password"
                   className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
@@ -94,7 +105,8 @@ const SignUp = () => {
 
                 {errors.password?.type === "pattern" && (
                   <p className="text-red-600">
-                    Password must be include one Uppercase and one special character.
+                    Password must be include one Uppercase and one special
+                    character.
                   </p>
                 )}
                 <label
@@ -103,6 +115,7 @@ const SignUp = () => {
                 >
                   Password
                 </label>
+                <span className="absolute right-1 top-4 pointer-events-none">{ showPass ? <BiHide /> : <BiShow />}</span>
               </div>
               <div className="relative z-0 w-full mb-6 group">
                 <input
