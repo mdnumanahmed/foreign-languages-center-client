@@ -6,11 +6,13 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext();
 
@@ -55,12 +57,27 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const resetPassword =(email) =>{
+    sendPasswordResetEmail(auth, email)
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      if (currentUser) {
+        axios.post("http://localhost:5000/jwt", { email: currentUser.email })
+          .then((data) => {
+            localStorage.setItem("access_token", data.data.token);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access_token");
+      }
     });
-    return () => unsubscribe();
+
+    return () => {
+      return unsubscribe;
+    };
   }, []);
 
   const authInfo = {
@@ -72,6 +89,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     googleSignIn,
     githubSignIn,
+    resetPassword
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
