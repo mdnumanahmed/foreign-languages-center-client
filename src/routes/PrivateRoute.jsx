@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom';
-import Spinner from '../shared/Spinner';
+import Spinner from '../pages/Shared/Spinner';
 import useAuth from '../hooks/useAuth';
 
 const PrivateRoute = ({children}) => {
