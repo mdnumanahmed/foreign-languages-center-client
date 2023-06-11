@@ -6,6 +6,7 @@ import Login from "../pages/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import StudentDashboard from "../pages/Dashboard/Student/StudentDashboard";
 import Dashboard from "../layouts/Dashboard";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -17,26 +18,35 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'signup',
-        element: <SignUp />
+        path: "signup",
+        element: <SignUp />,
       },
       {
-        path: 'login',
-        element: <Login />
-      }
+        path: "login",
+        element: <Login />,
+      },
     ],
   },
   {
-    path: 'dashboard',
-    element: <PrivateRoute><Dashboard /></PrivateRoute>,
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
+      //admin dashboard
+      {
+        path: "manageUsers",
+        element: <ManageUsers />,
+      },
       // student routes
       {
-        path: 'studentHome',
-        element: <StudentDashboard />
-      }
-    ]
-  }
+        path: "studentHome",
+        element: <StudentDashboard />,
+      },
+    ],
+  },
 ]);
 
 export default router;

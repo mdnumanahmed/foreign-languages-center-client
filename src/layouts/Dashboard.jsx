@@ -2,9 +2,10 @@ import { Outlet } from "react-router-dom";
 import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard";
 import InstructorDashboard from "../pages/Dashboard/Instructor/InstructorDashboard";
 import StudentDashboard from "../pages/Dashboard/Student/StudentDashboard";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
-  const isAdmin = false;
+  const [isAdmin] = useAdmin()
   const isInstructor = false;
   return (
     <div className="relative min-h-screen md:flex">
