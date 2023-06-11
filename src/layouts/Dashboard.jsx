@@ -5,7 +5,7 @@ import StudentDashboard from "../pages/Dashboard/Student/StudentDashboard";
 
 const Dashboard = () => {
   const isAdmin = false;
-  const isInstructor = true;
+  const isInstructor = false;
   return (
     <div className="relative min-h-screen md:flex">
       {isAdmin ? (

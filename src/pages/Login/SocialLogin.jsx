@@ -2,39 +2,62 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 
-const SocialLogin = (props) => {
-    const {setError} = props
+const SocialLogin = () => {
   const { googleSignIn, githubSignIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
   const handleGoogleSignIn = () => {
-    googleSignIn()
-      .then((result) => {
-        const loggedUser = result.user
-        console.log(loggedUser);
-        Swal.fire({
-          icon: "success",
-          title: "Welcome",
-          text: "User logged in successfully!",
-        });
-        navigate(from, { replace: true });
+    googleSignIn().then((result) => {
+      const loggedUser = result.user;
+      const saveUserToDB = {
+        name: loggedUser.displayName,
+        email: loggedUser.email,
+      };
+      fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(saveUserToDB),
       })
-      .catch((error) => setError(error));
+        .then((res) => res.json())
+        .then(() => {
+          Swal.fire({
+            icon: "success",
+            title: "Welcome",
+            text: "User logged in successfully!",
+          });
+          navigate(from, { replace: true });
+        });
+    });
   };
 
   const handleGithubSignIn = () => {
     githubSignIn()
       .then((result) => {
-        const loggedUser = result.user
-        console.log(loggedUser);
-        Swal.fire({
-          icon: "success",
-          title: "Welcome",
-          text: "User logged in successfully!",
-        });
-        navigate(from, { replace: true });
+        const loggedUser = result.user;
+        const saveUserToDB = {
+          name: loggedUser.displayName,
+          email: loggedUser.email,
+        };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUserToDB),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            Swal.fire({
+              icon: "success",
+              title: "Welcome",
+              text: "User logged in successfully!",
+            });
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => console.log(error));
   };
