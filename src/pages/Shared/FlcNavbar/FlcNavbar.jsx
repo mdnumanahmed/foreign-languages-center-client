@@ -91,7 +91,7 @@ const FlcNavbar = () => {
           <NavLink to="/classes">Classes</NavLink>
           {user && (
             <>
-              <NavLink to="/dashboard/manageUsers">Dashboard</NavLink>
+              <NavLink to="/dashboard">Dashboard</NavLink>
             </>
           )}
           <NavLink to="/contact">Contact</NavLink>
