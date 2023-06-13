@@ -115,7 +115,7 @@ const ManageUsers = () => {
                   {user.role === "admin" ? (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className={`btn btn-ghost bg-purple-600 hover:bg-purple-600 text-white  opacity-50 cursor-not-allowed `}
+                      className={`text-white bg-gradient-to-r from-green-200 via-green-300 to-green-200 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 cursor-not-allowed `}
                     >
                       {" "}
                       Make Admin{" "}
@@ -123,7 +123,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className={`btn  btn-ghost bg-purple-500 hover:bg-purple-600 text-white  `}
+                      className={`text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2`}
                     >
                       {" "}
                       Make Admin{" "}
@@ -135,7 +135,7 @@ const ManageUsers = () => {
                   {user.role === "admin" || user.role === "instructor" ? (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className={`btn btn-ghost bg-purple-500 hover:bg-purple-600 text-white   opacity-50 cursor-not-allowed`}
+                      className={`text-white bg-gradient-to-r from-green-200 via-green-300 to-green-200 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 cursor-not-allowed `}
                     >
                       {" "}
                       Make Instructor{" "}
@@ -143,7 +143,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeInstructor(user)}
-                      className={`btn btn-ghost bg-purple-500 hover:bg-purple-600 text-white  `}
+                      className={`text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2`}
                     >
                       {" "}
                       Make Instructor{" "}
