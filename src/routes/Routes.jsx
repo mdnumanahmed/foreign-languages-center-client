@@ -13,11 +13,14 @@ import InstructorRoute from "./InstructorRoute";
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses";
 import ManageClasses from "../pages/Dashboard/Admin/ManageClasses/ManageClasses";
 import AllClasses from "../pages/AllClasses/AllClasses";
+import NotFound from "../pages/NotFound/NotFound";
+import AllInstructors from "../pages/AllInstructors/AllInstructors";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
@@ -34,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "classes",
         element: <AllClasses />,
+      },
+      {
+        path: "instructors",
+        element: <AllInstructors />,
       },
     ],
   },

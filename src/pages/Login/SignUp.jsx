@@ -25,7 +25,7 @@ const SignUp = () => {
 
       updateUserData(data.name, data.photoURL)
         .then(() => {
-          const saveUserToDB = { name: data.name, email: data.email };
+          const saveUserToDB = { name: data.name, email: data.email, userImg: data.photoURL };
           fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
