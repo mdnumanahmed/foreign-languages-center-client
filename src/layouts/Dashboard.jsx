@@ -14,8 +14,6 @@ const Dashboard = () => {
     return <Spinner />
   }
 
-  console.log(isInstructor);
-
   return (
     <div className="relative min-h-screen md:flex">
       {isAdmin ? (
