@@ -16,6 +16,7 @@ import AllClasses from "../pages/AllClasses/AllClasses";
 import NotFound from "../pages/NotFound/NotFound";
 import AllInstructors from "../pages/AllInstructors/AllInstructors";
 import MySelectedClasses from "../pages/Dashboard/Student/MySelectedClasses/MySelectedClasses";
+import Payment from "../pages/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -56,20 +57,36 @@ const router = createBrowserRouter([
       //admin dashboard
       {
         path: "manageUsers",
-        element: <AdminRoute><ManageUsers /></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
       {
         path: "manageClasses",
-        element: <AdminRoute><ManageClasses /></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <ManageClasses />
+          </AdminRoute>
+        ),
       },
       // instructor routes
       {
         path: "addAClass",
-        element: <InstructorRoute><AddAClass /></InstructorRoute>,
+        element: (
+          <InstructorRoute>
+            <AddAClass />
+          </InstructorRoute>
+        ),
       },
       {
         path: "myClasses",
-        element: <InstructorRoute><MyClasses /></InstructorRoute>,
+        element: (
+          <InstructorRoute>
+            <MyClasses />
+          </InstructorRoute>
+        ),
       },
       // student routes
       {
@@ -79,6 +96,10 @@ const router = createBrowserRouter([
       {
         path: "selectedClasses",
         element: <MySelectedClasses />,
+      },
+      {
+        path: "payment/:id",
+        element: <Payment />,
       },
     ],
   },
