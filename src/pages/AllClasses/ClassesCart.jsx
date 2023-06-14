@@ -43,7 +43,7 @@ const ClassesCart = ({ classes }) => {
             timer: 1500,
           });
         }
-        fetch(`http://localhost:5000/class/${classes._id}`, {
+        fetch(`https://foreign-languages-center.web.app/class/${classes._id}`, {
           method: "PATCH",
         })
           .then((res) => res.json())

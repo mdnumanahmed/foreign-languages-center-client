@@ -15,7 +15,7 @@ const ManageUsers = () => {
 
   const handleMakeAdmin = (user) => {
     console.log(user);
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://foreign-languages-center.web.app/users/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -35,7 +35,7 @@ const ManageUsers = () => {
 
   const handleMakeInstructor = (user) => {
     console.log(user);
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+    fetch(`https://foreign-languages-center.web.app/users/instructor/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

@@ -18,7 +18,7 @@ const ManageClasses = () => {
 
   const handleMakeApprove = (classes) => {
     // console.log(classes)
-    fetch(`http://localhost:5000/class/approve/${classes._id}`, {
+    fetch(`https://foreign-languages-center.web.app/class/approve/${classes._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -38,7 +38,7 @@ const ManageClasses = () => {
 
   const handleMakeDeny = (classes) => {
     // console.log(classes)
-    fetch(`http://localhost:5000/class/deny/${classes._id}`, {
+    fetch(`https://foreign-languages-center.web.app/class/deny/${classes._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

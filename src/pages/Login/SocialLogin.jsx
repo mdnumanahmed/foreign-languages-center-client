@@ -15,7 +15,7 @@ const SocialLogin = () => {
         name: loggedUser.displayName,
         email: loggedUser.email,
       };
-      fetch("http://localhost:5000/users", {
+      fetch("https://foreign-languages-center.web.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -42,7 +42,7 @@ const SocialLogin = () => {
           name: loggedUser.displayName,
           email: loggedUser.email,
         };
-        fetch("http://localhost:5000/users", {
+        fetch("https://foreign-languages-center.web.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
