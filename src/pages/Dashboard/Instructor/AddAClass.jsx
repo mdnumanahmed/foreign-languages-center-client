@@ -24,7 +24,14 @@ const AddAClass = () => {
         // console.log(imageResponse)
         if (imageResponse.success) {
           const imgURL = imageResponse.data.display_url;
-          const { name,instructorName, instructorEmail, seats, price, status} = data;
+          const {
+            name,
+            instructorName,
+            instructorEmail,
+            seats,
+            price,
+            status,
+          } = data;
           const newItem = {
             name,
             image: imgURL,
@@ -33,7 +40,6 @@ const AddAClass = () => {
             instructorName,
             instructorEmail,
             status,
-            
           };
           console.log(newItem);
           axiosSecure.post("/class", newItem).then((data) => {
@@ -55,9 +61,9 @@ const AddAClass = () => {
 
   return (
     <div className="w-full ">
-    <Helmet>
-     Sports Academic | Add A Class
-    </Helmet>
+      <Helmet>
+        <title>FLC | Add A Class</title>
+      </Helmet>
       <form onSubmit={handleSubmit(onSubmit)} className="px-10">
         <div className="form-control  w-full  ">
           <label className="label">
@@ -87,98 +93,97 @@ const AddAClass = () => {
           />
         </div>
 
-      <div className="flex gap-10">
-      
-      <div className="form-control  w-full  ">
-      <label className="label">
-        <span className="label-text font-semibold">Instructor Name</span>
-      </label>
-      <input
-        defaultValue={user?.displayName}
-        type="text"
-        placeholder="Instructor Name"
-        {...register("instructorName", {
-          required: "true",
-          maxLength: 120,
-        })}
-        className="p-3  rounded-md w-full  "
-      />
-    </div>
+        <div className="flex gap-10">
+          <div className="form-control  w-full  ">
+            <label className="label">
+              <span className="label-text font-semibold">Instructor Name</span>
+            </label>
+            <input
+              defaultValue={user?.displayName}
+              type="text"
+              placeholder="Instructor Name"
+              {...register("instructorName", {
+                required: "true",
+                maxLength: 120,
+              })}
+              className="p-3  rounded-md w-full  "
+            />
+          </div>
 
-    <div className="form-control  w-full  ">
-      <label className="label">
-        <span className="label-text font-semibold">Instructor Email</span>
-      </label>
-      <input
-        defaultValue={user?.email}
-        type="email"
-        placeholder="Instructor Email"
-        {...register("instructorEmail", {
-          required: "true",
-          maxLength: 120,
-        })}
-        className="p-3  rounded-md w-full  "
-      />
-    </div>
-      </div>
+          <div className="form-control  w-full  ">
+            <label className="label">
+              <span className="label-text font-semibold">Instructor Email</span>
+            </label>
+            <input
+              defaultValue={user?.email}
+              type="email"
+              placeholder="Instructor Email"
+              {...register("instructorEmail", {
+                required: "true",
+                maxLength: 120,
+              })}
+              className="p-3  rounded-md w-full  "
+            />
+          </div>
+        </div>
 
-      <div className="flex gap-10">
-      
-      <div className="flex gap-4">
-      <div className="form-control   ">
-        <label className="label">
-          <span className="label-text font-semibold">Available Seats</span>
-        </label>
+        <div className="flex gap-10">
+          <div className="flex gap-4">
+            <div className="form-control   ">
+              <label className="label">
+                <span className="label-text font-semibold">
+                  Available Seats
+                </span>
+              </label>
+              <input
+                type="number"
+                {...register("seats", {
+                  required: "true",
+                })}
+                placeholder="Available Seats"
+                className="p-3  rounded-md  w-full    "
+              />
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <div className="form-control   ">
+              <label className="label">
+                <span className="label-text font-semibold"> Price</span>
+              </label>
+              <input
+                type="number"
+                {...register("price", {
+                  required: "true",
+                })}
+                placeholder=" Price"
+                className="p-3  rounded-md  w-full    "
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="form-control  w-full  ">
+          <label className="label">
+            <span className="label-text font-semibold">Class Status</span>
+          </label>
+          <input
+            defaultValue="pending"
+            type="text"
+            placeholder="Class Status"
+            {...register("status", {
+              required: "true",
+              maxLength: 20,
+            })}
+            className="p-3  rounded-md w-full  "
+          />
+        </div>
+
         <input
-          type="number"
-          {...register("seats", {
-            required: "true",
-          })}
-          placeholder="Available Seats"
-          className="p-3  rounded-md  w-full    "
+          className=" h-12 bg-purple-500 text-white  w-32 flex justify-center items-center btn-sm mt-4 mx-auto"
+          type="submit"
+          value="Add Item"
         />
-      </div>
-    </div>
-
-    <div className="flex gap-4">
-      <div className="form-control   ">
-        <label className="label">
-          <span className="label-text font-semibold"> Price</span>
-        </label>
-        <input
-          type="number"
-          {...register("price", {
-            required: "true",
-          })}
-          placeholder=" Price"
-          className="p-3  rounded-md  w-full    "
-        />
-      </div>
-    </div>
-      </div>
-
-      <div className="form-control  w-full  ">
-      <label className="label">
-        <span className="label-text font-semibold">Class Status</span>
-      </label>
-      <input
-        defaultValue="pending"
-        type="text"
-        placeholder="Class Status"
-        {...register("status", {
-          required: "true",
-          maxLength: 20,
-        })}
-        className="p-3  rounded-md w-full  "
-      />
-    </div>
-
-       
-        <input
-        className=" h-12 bg-purple-500 text-white  w-32 flex justify-center items-center btn-sm mt-4 mx-auto"
-        type="submit"
-        value="Add Item"
-      />
       </form>
     </div>
   );

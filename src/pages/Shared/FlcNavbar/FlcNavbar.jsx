@@ -23,13 +23,13 @@ const FlcNavbar = () => {
           <img src={logo} className="mr-3 h-10 sm:h-12" alt="FLC Logo" />
         </NavLink>
         <div className="flex items-center lg:order-2 ">
-          <button className="relative hidden lg:flex">
+          <button className="relative hidden lg:flex bg-transparent text-black shadow-none hover:text-black hover:bg-transparent hover:shadow-sm-light">
             <AiOutlineHeart className="flex mr-3 text-2xl" />
-            <span className="absolute -top-2 right-2 text-white leading-4 text-xs bg-[#ff007a] rounded-full w-4 h-4">
+            <span className="absolute -top-2 right-4 text-white leading-4 text-xs bg-[#ff007a] rounded-full w-4 h-4">
               0
             </span>
           </button>
-          <button className="relative hidden lg:flex">
+          <button className="relative hidden lg:flex bg-transparent text-black shadow-none hover:text-black hover:bg-transparent hover:shadow-sm-light">
             <AiOutlineShoppingCart className="flex mr-3 text-2xl" />
             <span className="absolute -top-2 right-2 text-white leading-4 text-xs bg-[#ff007a] rounded-full w-4 h-4">
               0

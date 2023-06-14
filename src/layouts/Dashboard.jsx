@@ -5,6 +5,7 @@ import StudentDashboard from "../pages/Dashboard/Student/StudentDashboard";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 import Spinner from "../pages/Shared/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const [isAdmin, isAdminLoading] = useAdmin()
@@ -16,6 +17,9 @@ const Dashboard = () => {
 
   return (
     <div className="relative min-h-screen md:flex">
+       <Helmet>
+        <title>FLC | Dashboard</title>
+      </Helmet>
       {isAdmin ? (
         <AdminDashboard />
       ) : isInstructor ? (

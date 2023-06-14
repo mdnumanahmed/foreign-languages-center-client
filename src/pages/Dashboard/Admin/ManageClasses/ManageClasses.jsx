@@ -65,7 +65,7 @@ const ManageClasses = () => {
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <Helmet>
-        <title>Sports Academic | All Users</title>
+        <title>FLC | Manage Classes</title>
       </Helmet>
       <h3 className="text-3xl font-semibold text-center mb-4">
         Total Classes:{allClasses.length}

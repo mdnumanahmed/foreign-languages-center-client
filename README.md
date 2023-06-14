@@ -1,7 +1,7 @@
 <h1 align="center" id="title">Foreign Languages Center</h1>
-<a align="center" href="#">Foreign Languages Center</a>
+<a align="center" href="https://foreign-languages-center.web.app/">Foreign Languages Center</a>
 
-<p align="center"><img src="#" alt="project-image"></p>
+<p align="center"><img src="https://foreign-languages-center.web.app/" alt="project-image"></p>
 <p id="description">I have designed and developed this site for learning purpose. When I enrolled in the Complete Web Development Course with Jhankar Mahbub at Programming Hero. As an Assignment on Integration Authentication, MongoDB Database, User-based different Dashboard, Payment System and connect Server side with Client side, I submitted this project.</p>
 
   

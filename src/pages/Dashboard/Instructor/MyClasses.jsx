@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Spinner from "../../Shared/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const MyClasses = () => {
   const { user, loading } = useAuth();
@@ -23,6 +24,10 @@ const MyClasses = () => {
 
   console.log(allClasses);
   return (
+    <>
+    <Helmet>
+        <title>FLC | My Classes</title>
+      </Helmet>
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         {/* head */}
@@ -67,6 +72,7 @@ const MyClasses = () => {
         </tbody>
       </table>
     </div>
+    </>
   );
 };
 

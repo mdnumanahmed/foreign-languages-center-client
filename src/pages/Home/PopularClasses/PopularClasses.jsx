@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import SingleClass from "./SingleClass";
+import { Zoom } from "react-awesome-reveal";
 
 const PopularClasses = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -17,11 +18,13 @@ const PopularClasses = () => {
           Our Popular Classes
         </h2>
       </div>
+      <Zoom>
       <div className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  md:gap-20 lg:gap-14 mb-20">
         {topClasses.slice(0, 6).map((top) => (
           <SingleClass key={top._id} top={top}></SingleClass>
         ))}
       </div>
+      </Zoom>
     </section>
   );
 };

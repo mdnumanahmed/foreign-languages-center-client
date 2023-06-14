@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
-import useStudent from "../../hooks/useStudent";
+import { Fade } from "react-awesome-reveal";
 
 const ClassesCart = ({ classes }) => {
   const { user } = useAuth();
@@ -65,6 +65,7 @@ const ClassesCart = ({ classes }) => {
   };
 
   return (
+    <Fade>
     <div>
       <div className={`card w-96 shadow-xl ${className} pb-7`}>
         <figure className="px-10 pt-10">
@@ -92,6 +93,7 @@ const ClassesCart = ({ classes }) => {
         </div>
       </div>
     </div>
+    </Fade>
   );
 };
 

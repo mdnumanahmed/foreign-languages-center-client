@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import { BiShow, BiHide } from 'react-icons/bi';
 import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
     const [error, setError] = useState("");
@@ -54,6 +55,9 @@ const SignUp = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>FLC | Sign Up</title>
+      </Helmet>
       <div className="w-[90%] lg:w-[50%] mx-auto p-20 my-5 bg-slate-100 rounded-lg shadow-xl">
         <div className="form-title text-center mb-5">
           <h2 className="text-3xl font-bold text-[#ff2556]">Please Sign Up</h2>
