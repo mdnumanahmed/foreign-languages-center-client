@@ -1,11 +1,11 @@
-import { Flip } from "react-awesome-reveal";
+import { Roll } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 const SingleInstructor = ({ instructor }) => {
   const { name, userImg, email } = instructor;
 
   return (
-    <Flip>
+    <Roll >
       <div>
       <div className=" card w-96 bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
@@ -29,7 +29,7 @@ const SingleInstructor = ({ instructor }) => {
         </div>
       </div>
     </div>
-    </Flip>
+    </Roll>
   );
 };
 

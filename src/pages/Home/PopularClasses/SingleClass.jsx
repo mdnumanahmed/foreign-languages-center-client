@@ -1,7 +1,9 @@
+import { Zoom } from "react-awesome-reveal";
 const SingleClass = ({ top }) => {
   const { image, seats, price, name, booking } = top;
   // console.log(top)
   return (
+    <Zoom>
     <div>
       <div className={`card w-96 shadow-xl `}>
         <figure className="px-10 pt-10">
@@ -15,6 +17,7 @@ const SingleClass = ({ top }) => {
         </div>
       </div>
     </div>
+    </Zoom>
   );
 };
 
