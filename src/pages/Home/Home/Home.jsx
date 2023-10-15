@@ -4,6 +4,7 @@ import PopularInstructor from "../PopularInstructor/PopularInstructor";
 import Slider from "../Slider/Slider";
 import Testimonial from "../Testimonial/Testimonial";
 import Categories from "../Categories/Categories";
+import Programs from "../Programs/Programs";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Categories />
       <PopularClasses />
       <PopularInstructor />
+      <Programs />
       <Testimonial />
     </div>
   );
